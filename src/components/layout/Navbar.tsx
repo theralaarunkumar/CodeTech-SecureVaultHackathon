@@ -1,4 +1,4 @@
-import { Shield, User as UserIcon, LogOut, History, X } from 'lucide-react';
+import { Shield, User as UserIcon, LogOut, History } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 import { motion } from 'framer-motion';
@@ -8,7 +8,7 @@ import { AuthModal } from '../auth/AuthModal';
 
 export const Navbar = () => {
   const location = useLocation();
-  const { user, signInWithGoogle, logout } = useAuth();
+  const { user, logout } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
