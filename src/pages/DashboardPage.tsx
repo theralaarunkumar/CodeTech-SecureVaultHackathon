@@ -100,7 +100,7 @@ export const DashboardPage = () => {
         const timeToCrack = String(zxcvbnResult.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
 
         // Fetch AI Suggestion
-        const aiSuggestion = await generateAiSuggestion(issues);
+        const aiSuggestion = await generateAiSuggestion(issues, zxcvbnResult.score);
 
         return {
           password: p,
@@ -249,7 +249,7 @@ export const DashboardPage = () => {
                 r="40"
                 fill="transparent"
                 initial={{ strokeDasharray: "0 251.2" }}
-                animate={{ strokeDasharray: `${(Math.max(2, results.score) / 100) * 251.2} 251.2` }}
+                animate={{ strokeDasharray: `${(Math.max(5, results.score) / 100) * 251.2} 251.2` }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
               ></motion.circle>
             </svg>

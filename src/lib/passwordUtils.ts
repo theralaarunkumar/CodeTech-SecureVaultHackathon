@@ -55,12 +55,16 @@ export function evaluateZxcvbn(password: string) {
   return zxcvbn(password);
 }
 
-export function generateAiSuggestion(issues: string[]): string {
+export function generateAiSuggestion(issues: string[], score: number): string {
   const i = issues.join(' ').toLowerCase();
   
   const isReused = i.includes('reused');
   const isBreached = i.includes('breach');
   const isWeak = i.includes('common') || i.includes('dictionary') || i.includes('short') || i.includes('length') || i.includes('pattern') || i.includes('keyboard');
+
+  if (score >= 4) {
+    return 'Strong password! Rotate annually';
+  }
 
   if (isReused) {
     return 'Reusing passwords means one breach exposes all accounts — use a unique password per site.';
@@ -75,5 +79,5 @@ export function generateAiSuggestion(issues: string[]): string {
     return 'Common passwords are cracked instantly — use 4 random unrelated words with numbers and symbols.';
   }
   
-  return 'Strong password! Store in a password manager and rotate every 12 months.';
+  return 'Strong password! Rotate annually';
 }
